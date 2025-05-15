@@ -64,6 +64,19 @@ HTML (HyperText Markup Language) is the standard language used to create web pag
 | `value`   | Default or submitted value for input fields |
 | `checked` | Pre-selects a checkbox or radio button |
 
+### Attribute Syntax
+
+In HTML, all attributes must appear in the **opening tag** of an element.  
+Attributes are written as `name="value"` pairs and separated by spaces.  
+They provide additional information about the element, such as its class, ID, or behavior.
+
+**Example:**
+
+```html
+<p class="flavor">French Vanilla</p>
+```
+In the example above, class="flavor" is an attribute placed inside the opening <p> tag.
+
 ---
 
 ## 6. Comments
