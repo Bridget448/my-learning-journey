@@ -64,7 +64,7 @@ HTML (HyperText Markup Language) is the standard language used to create web pag
 | `value`   | Default or submitted value for input fields |
 | `checked` | Pre-selects a checkbox or radio button |
 
-### Attribute Syntax
+### 5.1 Attribute Syntax
 
 In HTML, all attributes must appear in the **opening tag** of an element.  
 Attributes are written as `name="value"` pairs and separated by spaces.  
@@ -83,7 +83,7 @@ In the example above, class="flavor" is an attribute placed inside the opening <
 
 In HTML, comments are used to leave notes or explanations in the code. They are not displayed in the browser.
 
-### Syntax
+### 6.1 Syntax
 
 ```html
 <!-- This is a comment -->
@@ -95,7 +95,7 @@ In HTML, comments are used to leave notes or explanations in the code. They are 
 
 In HTML, elements are categorized as either **block-level** or **inline**.
 
-### Block-level Elements
+### 7.1 Block-level Elements
 
 - Start on a new line.  
 - Take up the full width of the container.  
@@ -111,7 +111,7 @@ In HTML, elements are categorized as either **block-level** or **inline**.
 <section>...</section>
 ```
 
-### Inline Elements
+### 7.2 Inline Elements
 
 - Do not start on a new line.
 - Only take up as much width as needed.
