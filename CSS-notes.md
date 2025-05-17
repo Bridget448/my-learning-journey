@@ -53,7 +53,7 @@ Note: Commas separate distinct selectors (apply the same styles to each), while 
 ## 2. Comments in CSS
 CSS comments are used to explain your code or to leave notes for yourself or other developers. They do not affect how the CSS works and are ignored by the browser.
 
-### Syntax
+### 2.1 Syntax
 
 ```css
 /* This is a comment */
@@ -73,7 +73,7 @@ strong {
 }
 ```
 
-### Rules
+### 2.2 Rules
 
 - Comments must start with `/*` and end with `*/`.
 - You can place comments on their own lines or after a declaration on the same line.
