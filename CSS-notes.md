@@ -50,5 +50,33 @@ Note: Commas separate distinct selectors (apply the same styles to each), while 
 
 ---
 
-## 2. More Sections Coming...
-(We'll continue adding more content together!)
+## 2. Comments in CSS
+CSS comments are used to explain your code or to leave notes for yourself or other developers. They do not affect how the CSS works and are ignored by the browser.
+
+### Syntax
+
+```css
+/* This is a comment */
+```
+
+**Examples:**
+
+```css
+/* Set background color for the body */
+body {
+  background-color: #f0f0f0;
+}
+
+/* Make the text bold */
+strong {
+  font-weight: bold;
+}
+```
+
+### Rules
+
+- Comments must start with `/*` and end with `*/`.
+- You can place comments on their own lines or after a declaration on the same line.
+- HTML-style comments (`<!-- -->`) do not work in CSS.
+
+---
