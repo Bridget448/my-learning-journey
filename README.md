@@ -17,21 +17,25 @@ My goal: land a remote job and apply for Spain’s digital nomad visa.
 ## Progress
 
 - [x] HTML: Cat Photo App (FreeCodeCamp)  
-- [ ] CSS: Cafe Menu (FreeCodeCamp) *(in progress)*  
+- [x] CSS: Cafe Menu (FreeCodeCamp)
 - [ ] More CSS, Forms, JavaScript, React, Python...
 
 ---
 
 ## Notes
 
-- [HTML Notes](HTML-notes.md)  
-- [CSS notes](CSS-notes.md)
+- [HTML Notes](html-notes.md)  
+- [CSS notes](css-notes.md)
 
 ---
 
 ## Projects
 
-- [index.html](index.html)
+- [Cat Photo App (source)](cat-photo-app): View code  
+- [Live Preview](cat-photo-app/index.html): See the rendered version in browser
+
+- [Cafe Menu Project (source)](cafe-menu): View code  
+- [Live Preview](cafe-menu/index.html): See the rendered version in browser
 
 ---
 
