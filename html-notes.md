@@ -127,7 +127,101 @@ In HTML, elements are categorized as either **block-level** or **inline**.
 
 ---
 
-## 8. Best Practices
+## 8. Form Controls
+
+### 8.1 Common Form Elements and Attributes
+
+#### 8.1.1 `<label>` Element
+
+**Purpose:**  
+Describes form inputs, improves accessibility, and allows users to click the label to focus the associated input.
+
+**Syntax (two ways):**
+
+```html
+<!-- Method 1: Associate via for/id -->
+<label for="email">Email:</label>
+<input id="email" type="email">
+
+<!-- Method 2: Wrap the input inside the label -->
+<label>
+  <input type="checkbox" value="cat"> I like cats
+</label>
+```
+
+**Usage Scenarios**
+
+| Use Case                            | Recommended Syntax       |
+| ----------------------------------- | ------------------------ |
+| Text inputs, email, number, etc.    | `for` + `id`             |
+| Checkbox or radio groups            | Wrap input inside label  |
+| Complex form layout/styling needed  | `for` + `id`             |
+| Prioritizing accessibility          | `for` + `id`             |
+
+**Notes**
+- Wrapping inputs in a label is quicker and doesn't require IDs, but is less flexible for styling.  
+- Using `for` + `id` gives better control and screen reader compatibility.  
+- You can combine both approaches as needed in one form.
+
+#### 8.1.2 `<input>` Element
+
+The `<input>` element is a versatile form control. Different `type` values define its behavior:
+
+| `type` value | Purpose                               | Example                                             |
+| ------------ | ------------------------------------- | --------------------------------------------------- |
+| `text`       | Single-line text input                | `<input type="text">`                               |
+| `email`      | Email input with built-in validation  | `<input type="email" required>`                     |
+| `number`     | Number input with optional range      | `<input type="number" min="13" max="130">`          |
+| `radio`      | Radio buttons (select one in a group) | `<input type="radio" name="pet" value="cat">`       |
+| `checkbox`   | Checkboxes (select multiple options)  | `<input type="checkbox" value="vet">`               |
+| `submit`     | Submit the form                       | `<input type="submit">` or `<button type="submit">` |
+
+The `required` attribute ensures the field must be completed before submission.
+
+#### 8.1.3 `<select>` and `<option>` Elements
+
+**Purpose:** Creates a dropdown menu for selecting one option from a list.
+
+**Syntax:**
+
+```html
+<label for="animal">Favorite animal:</label>
+<select id="animal" name="animal">
+  <option value="cat">Cat</option>
+  <option value="dog">Dog</option>
+</select>
+```
+
+#### 8.1.4 `<textarea>` Element
+
+**Purpose:**  
+Allows users to enter multi-line open-ended input, like suggestions or feedback.
+
+**Common attributes:**
+- `rows`: Number of visible text lines
+- `cols`: Width of the textarea
+- `placeholder`: Hint text shown when empty
+
+**Example:**
+```html
+<label for="comments">Additional Comments:</label>
+<textarea id="comments" name="comments" rows="4" cols="50" placeholder="Write your thoughts..."></textarea>
+```
+
+#### 8.1.5 Summary of Helpful Attributes
+
+| Attribute     | Function                                                                                 |
+| ------------- | ---------------------------------------------------------------------------------------- |
+| `required`    | Makes the field mandatory before form submission                                         |
+| `placeholder` | Provides a hint about what to enter                                                      |
+| `min` / `max` | Sets numeric input range                                                                 |
+| `name`        | Used to group elements (e.g. radio buttons), and to identify form data during submission |
+
+[MDN: required attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required)
+
+---
+
+## 9. Best Practices
 
 - Always use lowercase for tags.  
 - Close all tags properly (except for void elements).  
