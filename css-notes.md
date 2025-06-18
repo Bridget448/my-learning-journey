@@ -4,49 +4,18 @@ A concise summary of key CSS concepts, syntax, and best practices.
 
 ---
 
-## 1. Selectors
+## 1. CSS Selectors
 
-### 1.1 Class Selectors
-
-Use a dot (`.`) followed by the class name.
-
-```css
-.flavor {
-  text-align: left;
-  width: 75%;
-}
-```
-
-### 1.2 Type Selectors
-
-Use the element name directly.
-
-```css
-p {
-  font-size: 16px;
-}
-```
-
-### 1.3 Combining Selectors
-
-Multiple class selectors in one rule: use a comma and space to apply styles to multiple classes.
-
-```css
-.flavor, .dessert {
-  text-align: left;
-  width: 75%;
-}
-```
-
-Type selector within a class: no comma needed; use space to indicate nesting.
-
-```css
-.item p {
-  display: inline-block;
-}
-```
-
-Note: Commas separate distinct selectors (apply the same styles to each), while spaces indicate nested structure (targeting a type within a class).
+| Selector        | Purpose                                                | Example                        |
+|-----------------|--------------------------------------------------------|--------------------------------|
+| `*`             | Universal selector (selects all elements)             | `* { margin: 0; padding: 0; }` |
+| `.class`        | Select elements by class name                         | `.container {}`                |
+| `#id`           | Select element by ID                                  | `#header {}`                   |
+| `element`       | Type selector for HTML elements                       | `p {}`                         |
+| `element1 element2` | Descendant selector                          | `.wrapper p {}`                |
+| `element1 > element2` | Direct child selector                        | `ul > li {}`                   |
+| `a:hover`       | Pseudo-class selector for hover states                | `a:hover { color: red; }`      |
+| `::before`, `::after` | Pseudo-elements for inserting virtual content | `::before {}`                  |
 
 ---
 
@@ -80,3 +49,107 @@ strong {
 - HTML-style comments (`<!-- -->`) do not work in CSS.
 
 ---
+
+## 3. Reset and Normalize
+
+Use this rule at the top of your CSS to normalize spacing and box models across browsers:
+
+```css
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+```
+
+---
+
+## 4. Layout
+
+### 4.1 Display
+
+Common display values:
+
+- `block`
+- `inline`
+- `inline-block`
+- `none`
+- `flex`
+- `grid`
+
+### 4.2 Flexbox Basics
+
+```css
+display: flex;
+justify-content: center;  /* horizontal alignment */
+align-items: center;      /* vertical alignment */
+```
+
+### 4.3 Grid Basics
+
+```css
+display: grid;
+grid-template-columns: 1fr 2fr;
+gap: 1rem;
+```
+
+- 1fr 2fr means the first column takes one part, and the second takes two parts of the remaining space.
+- `gap` adds spacing between grid items.
+
+---
+
+## 5. Media Queries
+
+**Responsive design rule example:**
+
+```css
+@media only screen and (max-width: 720px) {
+  .image-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+```
+
+---
+
+## 6. Typography and Colors
+
+```css
+body {
+  font-family: Baskervville, serif;
+  color: linen;
+  background-color: rgb(20, 30, 40);
+}
+```
+
+- Use **fallback fonts** after the custom font to ensure text renders properly if the custom font fails to load.
+- `color`: Sets the **text color**.
+- `background-color`: Sets the **background color** of the element.
+
+---
+
+## 7. Common Properties
+
+| Property            | Description                                   |
+| ------------------- | --------------------------------------------- |
+| `margin`, `padding` | Spacing outside/inside elements               |
+| `color`             | Text color                                    |
+| `background-color`  | Element background                            |
+| `font-family`       | Text font                                     |
+| `font-size`         | Size of text                                  |
+| `text-align`        | Horizontal alignment (`left`, `center`, etc.) |
+| `line-height`       | Vertical spacing between lines of text        |
+
+---
+
+## 8. Miscellaneous
+
+- The `<hr>` tag can be styled with `margin` to create space before and after the horizontal rule.
+
+```css
+hr {
+  margin: 1.5rem 0;
+}
+```
