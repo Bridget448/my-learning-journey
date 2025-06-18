@@ -45,6 +45,7 @@ HTML (HyperText Markup Language) is the standard language used to create web pag
 | `<div>`                                | Block-level container                       |
 | `<span>`                               | Inline container                            |
 | `<input>`, `<label>`, `<button>`       | Form-related elements                       |
+| `<hr>`                                 | Thematic break; renders a horizontal line for content separation |
 | `<section>`, `<article>`, `<header>`, `<footer>` | Semantic layout tags               |
 
 ---
@@ -57,6 +58,7 @@ HTML (HyperText Markup Language) is the standard language used to create web pag
 | `src`     | Source path for images or media |
 | `alt`     | Alternative text for images |
 | `target`  | Determines how a link opens (e.g., `_blank`) |
+| `rel`     | Specifies the relationship between the current document and the linked resource (e.g., `stylesheet`) |
 | `id`      | Unique identifier for an element |
 | `class`   | CSS class name for styling |
 | `type`    | Type of input (e.g., `text`, `checkbox`) |
