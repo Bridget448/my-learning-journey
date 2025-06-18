@@ -100,7 +100,15 @@ gap: 1rem;
 
 ---
 
-## 5. Media Queries
+## 5. Responsive Design
+
+### 5.1 Viewport Meta Tag
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+### 5.2 Media Queries
 
 **Responsive design rule example:**
 
@@ -144,7 +152,7 @@ body {
 
 ---
 
-## 8. Miscellaneous
+## 8. Horizontal Rule (`<hr>`)
 
 - The `<hr>` tag can be styled with `margin` to create space before and after the horizontal rule.
 
