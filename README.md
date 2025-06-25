@@ -40,10 +40,10 @@ My goal: land a remote job and apply for Spain’s digital nomad visa.
 - [Cafe Menu Project (source)](cafe-menu): View code  
 - [Live Preview](cafe-menu/index.html): See the rendered version in browser
 
-- [Survey Form Project (source)](survey-form.html): View code  
-- [Live Preview](survey-form.html): See the rendered version in browser
+- [Survey Form Project (source)](survey-form): View code  
+- [Live Preview](survey-form/index.html): See the rendered version in browser
 
-- [Magazine Layout Project (source)](magazine-layout): View code  
+- [Magazine Layout Project (source)](magazine-layout): View code 
 - [Live Preview](magazine-layout/index.html): See the rendered version in browser
 
 ---
