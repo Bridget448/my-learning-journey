@@ -20,6 +20,7 @@ My goal: land a remote job and apply for Spain’s digital nomad visa.
 - [x] CSS: Cafe Menu (FreeCodeCamp)
 - [x] HTML Forms: Survey Form (FreeCodeCamp)
 - [x] CSS Grid: Magazine Layout (FreeCodeCamp)
+- [x] Responsive Design: Personal Portfolio Webpage (FreeCodeCamp)
 - [ ] More CSS, Forms, JavaScript, React, Python...
 
 ---
@@ -45,6 +46,9 @@ My goal: land a remote job and apply for Spain’s digital nomad visa.
 
 - [Magazine Layout Project (source)](magazine-layout): View code 
 - [Live Preview](magazine-layout/index.html): See the rendered version in browser
+
+- [Personal Portfolio Webpage (source)](personal-portfolio): View code  
+- [Live Preview](personal-portfolio/index.html): See the rendered version in browser
 
 ---
 
