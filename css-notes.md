@@ -152,7 +152,24 @@ body {
 
 ---
 
-## 8. Horizontal Rule (`<hr>`)
+## 8. Centering in CSS
+
+There are several commonly used CSS properties to center elements. Which one to use depends on the layout type and the element you want to center.
+
+| Property                  | Requires Flex/Grid? | Axis         | Targets                  | Typical Use Case                                      |
+|---------------------------|---------------------|--------------|---------------------------|--------------------------------------------------------|
+| `text-align: center`      | No               | Horizontal   | Inline or inline-block    | Centering text or links inside a block element        |
+| `justify-content: center` | Yes (Flex/Grid)  | Main axis    | All direct children       | Centering a group of elements inside a flex/grid box  |
+| `align-items: center`     | Yes (Flex/Grid)  | Cross axis   | All direct children       | Vertically centering items in a flex/grid container   |
+| `justify-content: flex-end` | Yes (Flex/Grid) | Main axis (end) | All direct children     | Aligning items to the right (or bottom)              |
+
+Tip:
+- For `justify-content` and `align-items` to work, you must set `display: flex` or `display: grid` on the container.
+- In regular document flow (non-flex), use `text-align` for inline content.
+
+---
+
+## 9. Horizontal Rule (`<hr>`)
 
 - The `<hr>` tag can be styled with `margin` to create space before and after the horizontal rule.
 
