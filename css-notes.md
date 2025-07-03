@@ -20,6 +20,7 @@ A concise summary of key CSS concepts, syntax, and best practices.
 ---
 
 ## 2. Comments in CSS
+
 CSS comments are used to explain your code or to leave notes for yourself or other developers. They do not affect how the CSS works and are ignored by the browser.
 
 ### 2.1 Syntax
@@ -119,6 +120,81 @@ gap: 1rem;
   }
 }
 ```
+
+**Common Breakpoints for Responsive Design:**
+
+To ensure your webpage adapts well to different device widths (desktop, tablet, and mobile), consider using the following universal structure:
+
+```css
+/* Large screens (desktops, 1025px and above) */
+@media (min-width: 1025px) {
+  body {
+    font-size: 1rem;
+  }
+
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .project-tile {
+    width: 30%;
+  }
+}
+
+/* Tablets (769px to 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  body {
+    font-size: 0.95rem;
+  }
+
+  .navbar {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .project-tile {
+    width: 45%;
+  }
+
+  .contact-icons {
+    gap: 1.5rem;
+  }
+}
+
+/* Mobile devices (768px and below) */
+@media (max-width: 768px) {
+  body {
+    font-size: 0.9rem;
+  }
+
+  #navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project-tile {
+    width: 90%;
+    margin-bottom: 2rem;
+  }
+
+  .contact-icons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  #welcome-section h1 {
+    font-size: 2rem;
+  }
+
+  #welcome-section p {
+    font-size: 1rem;
+  }
+}
+```
+
+Tip:
+- The structure can remain consistent across projects, but actual values (like font sizes or element widths) should be tailored based on your design needs.
 
 ---
 
