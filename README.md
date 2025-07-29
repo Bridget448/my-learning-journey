@@ -21,6 +21,7 @@ My goal: land a remote job and apply for Spain’s digital nomad visa.
 - [x] HTML Forms: Survey Form (FreeCodeCamp)
 - [x] CSS Grid: Magazine Layout (FreeCodeCamp)
 - [x] Responsive Design: Personal Portfolio Webpage (FreeCodeCamp)
+- [x] JavaScript: Pyramid Generator (FreeCodeCamp)
 - [ ] More CSS, Forms, JavaScript, React, Python...
 
 ---
@@ -50,6 +51,9 @@ My goal: land a remote job and apply for Spain’s digital nomad visa.
 
 - [Personal Portfolio Webpage (source)](personal-portfolio): View code  
 - [Live Preview](personal-portfolio/index.html): See the rendered version in browser
+
+- [Pyramid Generator (source)](javascript/pyramid-generator/index.js): View code  
+- [Live Preview](javascript/pyramid-generator/demo.png): See pyramid structure (screenshot)
 
 ---
 
