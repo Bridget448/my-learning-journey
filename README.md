@@ -35,7 +35,10 @@ My goal: land a remote job and apply for Spain’s digital nomad visa.
 
 ---
 
-## Projects
+## Guided Learning Projects
+
+Projects completed through structured courses and guided exercises.
+Focused on practicing specific concepts rather than product-level design.
 
 - [Cat Photo App (source)](cat-photo-app): View code  
 - [Live Preview](cat-photo-app/index.html): See the rendered version in browser
@@ -54,6 +57,16 @@ My goal: land a remote job and apply for Spain’s digital nomad visa.
 
 - [Pyramid Generator (source)](javascript/pyramid-generator): View code  
 - View output: Run [index.js](javascript/pyramid-generator/index.js) in browser console to see the pyramid
+
+- [Inventory Management Program (source)](javascript/inventory-management): View code  
+- Console-based JavaScript program built during FreeCodeCamp JavaScript Fundamentals Review
+
+---
+
+## Independent Projects
+
+> Projects designed and built independently to solve real problems or explore ideas.  
+> (Coming soon)
 
 ---
 
