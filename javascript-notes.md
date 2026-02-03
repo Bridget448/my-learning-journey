@@ -53,6 +53,29 @@ return add; // returns the function itself, not the result
 
 ---
 
+### 1.3 Function & Return — Key Insight
+
+A function can contain multiple `return` statements, but only one will be executed per call. Once a `return` runs, the function stops executing and returns a value.
+
+**Example:**
+
+```javascript
+function checkNumber(n) {
+  if (n > 0) {
+    return "positive";
+  }
+  return "not positive";
+}
+```
+
+**Explanation：**
+
+- The function has more than one `return`.
+- Only one `return` will be executed each time.
+- Code after `return` will not run.
+
+---
+
 ## 2. Strings & length
 
 ### 2.1 Using length correctly
