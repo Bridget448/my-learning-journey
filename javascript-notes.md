@@ -110,6 +110,62 @@ username[username.length - 1]
 
 ---
 
+### 3.2 String.slice() Method
+
+**Key idea:**
+- `slice()` extracts a portion of a string and returns it as a new string.
+- It does **not** modify the original string.
+
+**Syntax:**
+```javascript
+string.slice(startIndex, endIndex)
+```
+
+**Parameters:**
+- `startIndex`: where to start extraction (inclusive)
+- `endIndex`: where to stop extraction (exclusive, optional)
+- If `endIndex` is omitted, slice extracts to the end of the string
+
+**Examples:**
+```javascript
+const text = "hello world";
+
+text.slice(0, 5);    // "hello" (from index 0 to 4)
+text.slice(6);       // "world" (from index 6 to end)
+text.slice(0, 3);    // "hel"
+```
+
+**Real project usage:**
+
+1. **Truncate a string:**
+```javascript
+function truncateString(str, num) {
+  if (str.length > num) {
+    return str.slice(0, num) + "...";
+  }
+  return str;
+}
+
+truncateString("hello world", 5);  // "hello..."
+```
+
+2. **Email masker (split username and domain):**
+```javascript
+function maskEmail(email) {
+  const atIndex = email.indexOf("@");
+  const username = email.slice(0, atIndex);      // before @
+  const domain = email.slice(atIndex);           // from @ to end
+  // ...
+}
+```
+
+**Key thinking:**
+- `slice(0, n)` → get first n characters
+- `slice(n)` → get everything from index n onwards
+- Use with `indexOf()` to split strings at specific positions
+
+---
+
 ## 4. Logic & Conditionals
 
 ### 4.1 Translating English → JavaScript Logic
