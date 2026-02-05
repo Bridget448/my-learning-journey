@@ -76,6 +76,55 @@ function checkNumber(n) {
 
 ---
 
+### 1.4 Returning Boolean Expressions Directly
+
+**Key insight:**
+- Comparison expressions (`===`, `>`, `<`, etc.) already return `true` or `false`.
+- You can return them directly instead of using `if/else`.
+
+❌ **Unnecessary if/else:**
+```javascript
+function isPositive(n) {
+  if (n > 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+```
+
+✅ **Direct return:**
+```javascript
+function isPositive(n) {
+  return n > 0;  // already returns true or false
+}
+```
+
+**More examples:**
+```javascript
+// Check if string ends with target
+function confirmEnding(str, target) {
+  return str.slice(-target.length) === target;
+}
+
+// Check if number is even
+function isEven(num) {
+  return num % 2 === 0;
+}
+
+// Check if array is empty
+function isEmpty(arr) {
+  return arr.length === 0;
+}
+```
+
+**Why this matters:**
+- More concise and readable
+- Fewer lines of code
+- Follows the principle: "don't write unnecessary code"
+
+---
+
 ## 2. Operators
 
 ### 2.1 % Operator (Remainder)
@@ -163,6 +212,26 @@ function maskEmail(email) {
 - `slice(0, n)` → get first n characters
 - `slice(n)` → get everything from index n onwards
 - Use with `indexOf()` to split strings at specific positions
+
+**Negative indices:**
+- Negative numbers count from the end of the string
+- `-1` = last character, `-2` = second-to-last, etc.
+
+**Examples:**
+```javascript
+const text = "hello world";
+
+text.slice(-5);      // "world" (last 5 characters)
+text.slice(-1);      // "d" (last character)
+text.slice(0, -6);   // "hello" (from start, stop 6 from end)
+```
+
+**Common pattern: extract ending**
+```javascript
+// Check if string ends with "world"
+const target = "world";
+const lastPart = text.slice(-target.length);  // "world"
+```
 
 ---
 
