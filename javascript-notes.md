@@ -139,7 +139,7 @@ function isEmpty(arr) {
 
 ---
 
-## 3. Strings & length
+## 3. Strings
 
 ### 3.1 Using length correctly
 
@@ -184,6 +184,19 @@ text.slice(6);       // "world" (from index 6 to end)
 text.slice(0, 3);    // "hel"
 ```
 
+**Negative indices:**
+- Negative numbers count from the end of the string
+- `-1` = last character, `-2` = second-to-last, etc.
+
+**Examples:**
+```javascript
+const text = "hello world";
+
+text.slice(-5);      // "world" (last 5 characters)
+text.slice(-1);      // "d" (last character)
+text.slice(0, -6);   // "hello" (from start, stop 6 from end)
+```
+
 **Real project usage:**
 
 1. **Truncate a string:**
@@ -208,36 +221,93 @@ function maskEmail(email) {
 }
 ```
 
+3. **Check if string ends with target:**
+```javascript
+function confirmEnding(str, target) {
+  const lastPart = str.slice(-target.length);
+  return lastPart === target;
+}
+
+confirmEnding("hello world", "world");  // true
+```
+
 **Key thinking:**
 - `slice(0, n)` → get first n characters
 - `slice(n)` → get everything from index n onwards
+- `slice(-n)` → get last n characters
 - Use with `indexOf()` to split strings at specific positions
-
-**Negative indices:**
-- Negative numbers count from the end of the string
-- `-1` = last character, `-2` = second-to-last, etc.
-
-**Examples:**
-```javascript
-const text = "hello world";
-
-text.slice(-5);      // "world" (last 5 characters)
-text.slice(-1);      // "d" (last character)
-text.slice(0, -6);   // "hello" (from start, stop 6 from end)
-```
-
-**Common pattern: extract ending**
-```javascript
-// Check if string ends with "world"
-const target = "world";
-const lastPart = text.slice(-target.length);  // "world"
-```
 
 ---
 
-## 4. Logic & Conditionals
+## 4. Arrays
 
-### 4.1 Translating English → JavaScript Logic
+### 4.1 Array.join() Method
+
+**Key idea:**
+- `join()` converts all elements in an array to strings and concatenates them into a single string.
+- Elements are separated by a specified separator (default is comma).
+
+**Syntax:**
+```javascript
+array.join(separator)
+```
+
+**Parameters:**
+- `separator` (optional): string to separate each element. Default is `","`.
+
+**Examples:**
+
+```javascript
+const fruits = ["Apple", "Banana", "Orange"];
+
+fruits.join();         // "Apple,Banana,Orange" (default comma)
+fruits.join(", ");     // "Apple, Banana, Orange" (comma + space)
+fruits.join(" - ");    // "Apple - Banana - Orange"
+fruits.join("");       // "AppleBananaOrange" (no separator)
+fruits.join(" and ");  // "Apple and Banana and Orange"
+```
+
+**Real project usage:**
+
+1. **Display menu items:**
+```javascript
+function showLunchMenu(lunches) {
+  if (lunches.length === 0) {
+    console.log("The menu is empty.");
+  } else {
+    console.log("Menu items: " + lunches.join(", "));
+  }
+}
+
+showLunchMenu(["Pizza", "Burger", "Salad"]);
+// Output: "Menu items: Pizza, Burger, Salad"
+```
+
+2. **Create a sentence from words:**
+```javascript
+const words = ["JavaScript", "is", "awesome"];
+const sentence = words.join(" ");
+console.log(sentence);  // "JavaScript is awesome"
+```
+
+3. **Format file paths:**
+```javascript
+const pathParts = ["home", "user", "documents", "file.txt"];
+const path = pathParts.join("/");
+console.log(path);  // "home/user/documents/file.txt"
+```
+
+**Key thinking:**
+- `join()` is the opposite of `split()`
+- `split()`: string → array
+- `join()`: array → string
+- Very useful for displaying array contents in a readable format
+
+---
+
+## 5. Logic & Conditionals
+
+### 5.1 Translating English → JavaScript Logic
 
 **Example:**
 
@@ -261,7 +331,7 @@ if (annualIncome >= minIncome && creditScore >= minCreditScore) {
 
 ---
 
-### 4.2 if + unless + unless (Logic Priority Pattern)
+### 5.2 if + unless + unless (Logic Priority Pattern)
 
 **Key insight:**
 - Some English instructions describe conditions as "if + unless + unless".
@@ -284,9 +354,9 @@ if (specialCase) {
 
 ---
 
-## 5. Common Mistakes I Made
+## 6. Common Mistakes I Made
 
-### 5.1 Forgetting Parentheses
+### 6.1 Forgetting Parentheses
 
 ❌ **Wrong:**
 ```javascript
@@ -302,7 +372,7 @@ productName.toLowerCase();
 
 ---
 
-### 5.2 Returning the Wrong Thing
+### 6.2 Returning the Wrong Thing
 
 ❌ **Wrong:**
 ```javascript
@@ -318,9 +388,25 @@ return maskedEmail;
 - `maskEmail` is the function name.
 - `maskedEmail` is the computed value.
 
+### 6.3 Not saving return values when needed
+
+❌ **Wrong:**
+```javascript
+lunches.pop();  // deletes element but loses the value
+console.log("[Lunch Item] removed");
+```
+
+✅ **Correct:**
+```javascript
+const removed = lunches.pop();  // save the returned value
+console.log(removed + " removed");
+```
+
+**Reason:** Methods like `pop()`, `shift()`, `push()`, `unshift()` return useful values that you might need.
+
 ---
 
-## 6. Mental Model (How I Think About JS)
+## 7. Mental Model (How I Think About JS)
 
 ### Function = Machine
 
@@ -339,9 +425,9 @@ Output:  a*******e@example.com
 
 ---
 
-## 7. Patterns Worth Remembering
+## 8. Patterns Worth Remembering
 
-### 7.1 Find Item in Array
+### 8.1 Find Item in Array
 
 ```javascript
 function findIndex(arr, name) {
@@ -360,7 +446,7 @@ function findIndex(arr, name) {
 
 ---
 
-### 7.2 Email Masker Pattern
+### 8.2 Email Masker Pattern
 
 **Problem:** Mask an email like `apple.pie@example.com` → `a*******e@example.com`
 
@@ -388,9 +474,65 @@ function maskEmail(email) {
 - `slice` → split string
 - `repeat` → generate stars
 
+### 8.3 Random Selection from Array
+
+**Problem:** Select a random element from an array.
+
+**Key idea:**
+- Generate a random index between `0` and `array.length - 1`
+- Use that index to access the element
+
+**Code:**
+```javascript
+function getRandomElement(arr) {
+  if (arr.length === 0) {
+    return null;  // or handle empty array case
+  }
+  
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  return arr[randomIndex];
+}
+```
+
+**How it works:**
+1. `Math.random()` generates a number between `0` (inclusive) and `1` (exclusive)
+2. Multiply by `arr.length` to get range `0` to `arr.length` (exclusive)
+3. `Math.floor()` rounds down to get a valid integer index
+
+**Examples:**
+```javascript
+const lunches = ["Pizza", "Burger", "Salad"];
+
+// Math.random() might return: 0.7234
+// 0.7234 * 3 = 2.1702
+// Math.floor(2.1702) = 2
+// lunches[2] = "Salad"
+
+const random = getRandomElement(lunches);  // Could be any of the three
+```
+
+**Real project usage:**
+```javascript
+function getRandomLunch(lunches) {
+  if (lunches.length === 0) {
+    console.log("No lunches available.");
+  } else {
+    const randomIndex = Math.floor(Math.random() * lunches.length);
+    const randomLunch = lunches[randomIndex];
+    console.log("Randomly selected lunch: " + randomLunch);
+  }
+}
+```
+
+**Key thinking:**
+- `Math.random()` → generates random decimal between 0 and 1
+- Multiply by array length → scale to array size
+- `Math.floor()` → convert to valid integer index
+- Always check for empty arrays first
+
 ---
 
-## 8. My Learning Insight
+## 9. My Learning Insight
 
 I realized that coding is not about memorizing syntax, but about translating human language into logical steps.
 
