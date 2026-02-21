@@ -305,9 +305,65 @@ console.log(path);  // "home/user/documents/file.txt"
 
 ---
 
-## 5. Logic & Conditionals
+## 5. Objects
 
-### 5.1 Translating English → JavaScript Logic
+### 5.1 Nested Objects
+
+**Key idea:**
+- Objects can contain other objects as property values.
+- Nested objects don't need `const` declaration.
+- Curly braces `{}` define nested objects.
+
+**Example:**
+```javascript
+const storyObj = {
+  scary: {
+    story: "A dark tale...",
+    borderColor: "#ee4b2b"
+  },
+  funny: {
+    story: "A hilarious adventure...",
+    borderColor: "#f1be32"
+  }
+};
+```
+
+**Accessing nested values (using multiple dots):**
+```javascript
+// Two dots = two levels deep
+storyObj.scary.story           // "A dark tale..."
+//       ↑     ↑
+//    1st level: scary object
+//    2nd level: story property
+
+storyObj.funny.borderColor     // "#f1be32"
+```
+
+**Structure visualization:**
+```
+Outer object (storyObj)
+├── scary: { story, borderColor }
+└── funny: { story, borderColor }
+```
+
+**Common mistake:**
+```javascript
+// ❌ Wrong: Don't use const for nested objects
+const stories = {
+  const scary: { ... }  // Syntax error!
+};
+
+// ✅ Correct: Just use curly braces
+const stories = {
+  scary: { ... }
+};
+```
+
+---
+
+## 6. Logic & Conditionals
+
+### 6.1 Translating English → JavaScript Logic
 
 **Example:**
 
@@ -331,7 +387,7 @@ if (annualIncome >= minIncome && creditScore >= minCreditScore) {
 
 ---
 
-### 5.2 if + unless + unless (Logic Priority Pattern)
+### 6.2 if + unless + unless (Logic Priority Pattern)
 
 **Key insight:**
 - Some English instructions describe conditions as "if + unless + unless".
@@ -354,9 +410,9 @@ if (specialCase) {
 
 ---
 
-## 6. Common Mistakes I Made
+## 7. Common Mistakes I Made
 
-### 6.1 Forgetting Parentheses
+### 7.1 Forgetting Parentheses
 
 ❌ **Wrong:**
 ```javascript
@@ -372,7 +428,7 @@ productName.toLowerCase();
 
 ---
 
-### 6.2 Returning the Wrong Thing
+### 7.2 Returning the Wrong Thing
 
 ❌ **Wrong:**
 ```javascript
@@ -388,7 +444,7 @@ return maskedEmail;
 - `maskEmail` is the function name.
 - `maskedEmail` is the computed value.
 
-### 6.3 Not saving return values when needed
+### 7.3 Not saving return values when needed
 
 ❌ **Wrong:**
 ```javascript
@@ -406,7 +462,7 @@ console.log(removed + " removed");
 
 ---
 
-## 7. Mental Model (How I Think About JS)
+## 8. Mental Model (How I Think About JS)
 
 ### Function = Machine
 
@@ -425,9 +481,9 @@ Output:  a*******e@example.com
 
 ---
 
-## 8. Patterns Worth Remembering
+## 9. Patterns Worth Remembering
 
-### 8.1 Find Item in Array
+### 9.1 Find Item in Array
 
 ```javascript
 function findIndex(arr, name) {
@@ -446,7 +502,7 @@ function findIndex(arr, name) {
 
 ---
 
-### 8.2 Email Masker Pattern
+### 9.2 Email Masker Pattern
 
 **Problem:** Mask an email like `apple.pie@example.com` → `a*******e@example.com`
 
@@ -474,7 +530,7 @@ function maskEmail(email) {
 - `slice` → split string
 - `repeat` → generate stars
 
-### 8.3 Random Selection from Array
+### 9.3 Random Selection from Array
 
 **Problem:** Select a random element from an array.
 
@@ -532,7 +588,7 @@ function getRandomLunch(lunches) {
 
 ---
 
-## 9. My Learning Insight
+## 10. My Learning Insight
 
 I realized that coding is not about memorizing syntax, but about translating human language into logical steps.
 
