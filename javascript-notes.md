@@ -125,6 +125,137 @@ function isEmpty(arr) {
 
 ---
 
+### 1.5 Functions Without return
+
+**Key insight:**
+- Not all functions need a `return` statement.
+- If a function only performs actions (like logging to console), it doesn't need to return a value.
+- Functions without `return` automatically return `undefined`.
+
+**When to use `return`:**
+- When the function needs to send a value back to the caller
+- When the instructions explicitly require returning a value
+
+**When NOT to use `return`:**
+- When the function only performs actions (logging, modifying arrays, etc.)
+- When no value needs to be passed back
+
+---
+
+### 1.6 Arrow Functions
+
+**Key insight:**
+- Arrow functions are a shorter syntax for writing functions.
+- They are often anonymous (no name).
+- To give an arrow function a name, assign it to a variable using `const`.
+
+**Traditional function:**
+```javascript
+function add(a, b) {
+  return a + b;
+}
+```
+
+**Arrow function (with name):**
+```javascript
+const add = (a, b) => {
+  return a + b;
+};
+```
+
+**Arrow function (shorthand - single expression):**
+```javascript
+const add = (a, b) => a + b;  // implicit return
+```
+
+**Anonymous arrow function (as callback):**
+```javascript
+button.addEventListener("click", () => {
+  console.log("Button clicked!");
+});
+```
+
+**Syntax rules:**
+```javascript
+// Multiple parameters: use parentheses
+const add = (a, b) => a + b;
+
+// Single parameter: parentheses optional
+const double = num => num * 2;
+const double = (num) => num * 2;  // also valid
+
+// No parameters: parentheses required
+const greet = () => console.log("Hello");
+
+// Multiple lines: use curly braces and explicit return
+const calculate = (x, y) => {
+  const sum = x + y;
+  return sum * 2;
+};
+```
+
+**Common use cases:**
+- Event listeners
+- Array methods (forEach, map, filter)
+- Callback functions
+
+**Example from projects:**
+```javascript
+// Event listener with arrow function
+happyBtn.addEventListener("click", () => updateCount(happyBtn));
+
+// Array forEach with arrow function
+btns.forEach((btn) => {
+  btn.addEventListener("click", () => updateCount(btn));
+});
+```
+
+---
+
+### 1.7 Nested Functions
+
+**Key insight:**
+- Functions can be placed inside other functions.
+- Inner functions can access variables from outer functions.
+- Nested functions don't need parameters if they use outer variables.
+
+**Example:**
+```javascript
+function outerFunction() {
+  const message = "Hello";
+  
+  // Inner function
+  function innerFunction() {
+    console.log(message);  // Can access outer variable
+  }
+  
+  innerFunction();
+}
+```
+
+**Real project usage (Event listeners):**
+```javascript
+// forEach is the outer function
+btns.forEach((btn) => {
+  // addEventListener callback is the inner function
+  btn.addEventListener("click", () => {
+    updateCount(btn);  // Can access 'btn' from outer forEach
+  });
+});
+```
+
+**Why inner function has no parameters:**
+```javascript
+btns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    // No parameters here, but can use 'btn' from outer scope
+    updateCount(btn);
+  });
+});
+```
+
+---
+
 ## 2. Operators
 
 ### 2.1 % Operator (Remainder)
@@ -305,6 +436,121 @@ console.log(path);  // "home/user/documents/file.txt"
 
 ---
 
+### 4.2 Array.forEach() Method
+
+**Key idea:**
+- `forEach()` executes a provided function once for each array element.
+- It's a cleaner way to loop through arrays compared to traditional `for` loops.
+
+**Syntax:**
+```javascript
+array.forEach(function(element, index, array) {
+  // code to execute for each element
+});
+```
+
+**Important:** The function inside `forEach()` is called a **callback function**.
+
+**Parameters of the callback function:**
+- `element`: the current item being processed
+- `index` (optional): the index of the current item
+- `array` (optional): the array being traversed
+
+**Most common usage (only element):**
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+numbers.forEach(function(num) {
+  console.log(num);
+});
+// Output: 1, 2, 3, 4, 5
+```
+
+**With arrow function (more common in modern code):**
+```javascript
+numbers.forEach((num) => {
+  console.log(num);
+});
+```
+
+**Using index parameter:**
+```javascript
+const fruits = ["apple", "banana", "orange"];
+
+fruits.forEach((fruit, index) => {
+  console.log(index + ": " + fruit);
+});
+// Output:
+// 0: apple
+// 1: banana
+// 2: orange
+```
+
+**vs traditional for loop:**
+
+**Traditional for loop:**
+```javascript
+const numbers = [1, 2, 3];
+for (let i = 0; i < numbers.length; i++) {
+  console.log(numbers[i]);
+}
+```
+
+**forEach (cleaner):**
+```javascript
+const numbers = [1, 2, 3];
+numbers.forEach((num) => {
+  console.log(num);
+});
+```
+
+**Real project usage (Emoji Reactor):**
+```javascript
+// Get all emoji buttons
+const btns = document.querySelectorAll(".emoji-btn");
+
+// Add event listener to each button
+btns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    updateCount(btn);
+  });
+});
+```
+
+**Breaking down the callback:**
+```javascript
+// The callback function
+(btn) => {
+  btn.addEventListener("click", () => {
+    updateCount(btn);
+  });
+}
+
+// 'btn' is the parameter name (you can call it anything)
+// For each button in the array, this function is executed
+// 'btn' represents the current button being processed
+```
+
+**Why parameter name doesn't matter:**
+```javascript
+// These are all equivalent:
+btns.forEach((btn) => { ... });
+btns.forEach((button) => { ... });
+btns.forEach((element) => { ... });
+btns.forEach((x) => { ... });
+
+// The name you choose is just for readability
+// Use descriptive names: 'btn' for buttons, 'item' for items, etc.
+```
+
+**Key thinking:**
+- `forEach()` automatically loops through the array
+- For each element, it calls your function
+- Your function receives the current element as a parameter
+- You name the parameter whatever makes sense
+
+---
+
 ## 5. Objects
 
 ### 5.1 Nested Objects
@@ -361,9 +607,109 @@ const stories = {
 
 ---
 
-## 6. Logic & Conditionals
+## 6. DOM Manipulation
 
-### 6.1 Translating English → JavaScript Logic
+### 6.1 querySelector vs querySelectorAll
+
+**Key differences:**
+
+| Method | Returns | Use case |
+|--------|---------|----------|
+| `querySelector()` | First matching element | When you need one element |
+| `querySelectorAll()` | NodeList (all matches) | When you need multiple elements |
+
+**querySelector - returns ONE element:**
+```javascript
+const firstBtn = document.querySelector(".emoji-btn");
+// Returns: <button class="emoji-btn">...</button>
+```
+
+**querySelectorAll - returns ALL elements:**
+```javascript
+const allBtns = document.querySelectorAll(".emoji-btn");
+// Returns: NodeList [<button>, <button>, <button>, <button>]
+```
+
+**What is a NodeList?**
+- Similar to an array
+- Can use `forEach()` to loop through it
+- Cannot use other array methods like `map()` or `filter()`
+
+**Example:**
+```javascript
+// HTML:
+// <button class="emoji-btn">Happy</button>
+// <button class="emoji-btn">Sad</button>
+// <button class="emoji-btn">Angry</button>
+
+const btns = document.querySelectorAll(".emoji-btn");
+console.log(btns.length);  // 3
+
+// Loop through all buttons
+btns.forEach((btn) => {
+  console.log(btn);
+});
+```
+
+**Common pattern: querySelectorAll + forEach:**
+```javascript
+// Select all buttons with class "emoji-btn"
+const btns = document.querySelectorAll(".emoji-btn");
+
+// Add event listener to each button
+btns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    updateCount(btn);
+  });
+});
+```
+
+---
+
+### 6.2 textContent vs console.log
+
+**Key difference:**
+
+| Method | Where it shows | Who sees it | Purpose |
+|--------|---------------|-------------|---------|
+| `textContent` | On the webpage | Users | Display content to users |
+| `console.log` | Developer console | Developers | Debug code |
+
+**textContent - for users:**
+```javascript
+const element = document.getElementById("result");
+element.textContent = "Hello, user!";
+// User sees "Hello, user!" on the webpage
+```
+
+**console.log - for developers:**
+```javascript
+console.log("Debugging info");
+// Only developers with console open can see this
+```
+
+**Example:**
+```javascript
+button.addEventListener("click", function() {
+  const count = 5;
+  
+  // Update webpage (users see this)
+  countElement.textContent = count + "/10";
+  
+  // Log for debugging (only developers see this)
+  console.log("Current count:", count);
+});
+```
+
+**Real-world analogy:**
+- `textContent` = restaurant menu (customers see it)
+- `console.log` = kitchen notes (only staff see it)
+
+---
+
+## 7. Logic & Conditionals
+
+### 7.1 Translating English → JavaScript Logic
 
 **Example:**
 
@@ -387,7 +733,7 @@ if (annualIncome >= minIncome && creditScore >= minCreditScore) {
 
 ---
 
-### 6.2 if + unless + unless (Logic Priority Pattern)
+### 7.2 if + unless + unless (Logic Priority Pattern)
 
 **Key insight:**
 - Some English instructions describe conditions as "if + unless + unless".
@@ -410,9 +756,9 @@ if (specialCase) {
 
 ---
 
-## 7. Common Mistakes I Made
+## 8. Common Mistakes I Made
 
-### 7.1 Forgetting Parentheses
+### 8.1 Forgetting Parentheses
 
 ❌ **Wrong:**
 ```javascript
@@ -428,7 +774,7 @@ productName.toLowerCase();
 
 ---
 
-### 7.2 Returning the Wrong Thing
+### 8.2 Returning the Wrong Thing
 
 ❌ **Wrong:**
 ```javascript
@@ -444,7 +790,7 @@ return maskedEmail;
 - `maskEmail` is the function name.
 - `maskedEmail` is the computed value.
 
-### 7.3 Not saving return values when needed
+### 8.3 Not saving return values when needed
 
 ❌ **Wrong:**
 ```javascript
@@ -462,7 +808,7 @@ console.log(removed + " removed");
 
 ---
 
-## 8. Mental Model (How I Think About JS)
+## 9. Mental Model (How I Think About JS)
 
 ### Function = Machine
 
@@ -481,9 +827,9 @@ Output:  a*******e@example.com
 
 ---
 
-## 9. Patterns Worth Remembering
+## 10. Patterns Worth Remembering
 
-### 9.1 Find Item in Array
+### 10.1 Find Item in Array
 
 ```javascript
 function findIndex(arr, name) {
@@ -502,7 +848,7 @@ function findIndex(arr, name) {
 
 ---
 
-### 9.2 Email Masker Pattern
+### 10.2 Email Masker Pattern
 
 **Problem:** Mask an email like `apple.pie@example.com` → `a*******e@example.com`
 
@@ -530,7 +876,7 @@ function maskEmail(email) {
 - `slice` → split string
 - `repeat` → generate stars
 
-### 9.3 Random Selection from Array
+### 10.3 Random Selection from Array
 
 **Problem:** Select a random element from an array.
 
@@ -588,7 +934,50 @@ function getRandomLunch(lunches) {
 
 ---
 
-## 10. My Learning Insight
+### 10.4 Batch Event Listeners Pattern
+
+**Problem:** Adding the same event listener to multiple elements results in repetitive code.
+
+**Solution:** Use `querySelectorAll()` + `forEach()` to handle all elements at once.
+
+**Before (repetitive):**
+```javascript
+const happyBtn = document.querySelector("#happy-btn");
+const sadBtn = document.querySelector("#sad-btn");
+const angryBtn = document.querySelector("#angry-btn");
+const lovingBtn = document.querySelector("#loving-btn");
+
+happyBtn.addEventListener("click", () => updateCount(happyBtn));
+sadBtn.addEventListener("click", () => updateCount(sadBtn));
+angryBtn.addEventListener("click", () => updateCount(angryBtn));
+lovingBtn.addEventListener("click", () => updateCount(lovingBtn));
+```
+
+**After (clean and scalable):**
+```javascript
+const btns = document.querySelectorAll(".emoji-btn");
+
+btns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    updateCount(btn);
+  });
+});
+```
+
+**Benefits:**
+- Less code duplication
+- Easier to maintain
+- Scalable (adding more buttons requires no code changes)
+- Follows DRY principle (Don't Repeat Yourself)
+
+**When to use this pattern:**
+- Multiple elements need the same event listener
+- Elements share a common class
+- You want to avoid repetitive code
+
+---
+
+## 11. My Learning Insight
 
 I realized that coding is not about memorizing syntax, but about translating human language into logical steps.
 
