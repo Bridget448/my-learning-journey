@@ -270,6 +270,67 @@ btns.forEach((btn) => {
 
 ---
 
+### 2.2 Ternary Operator (? :)
+
+**Key insight:**
+- The ternary operator is a shorthand for `if/else` statements.
+- It's called "ternary" because it has three parts.
+
+**Syntax:**
+```javascript
+condition ? valueIfTrue : valueIfFalse
+```
+
+**Example:**
+```javascript
+const age = 18;
+const status = age >= 18 ? "adult" : "minor";
+// If age >= 18 → "adult"
+// If age < 18 → "minor"
+```
+
+**Traditional if/else (verbose):**
+```javascript
+let status;
+if (age >= 18) {
+  status = "adult";
+} else {
+  status = "minor";
+}
+```
+
+**Ternary operator (concise):**
+```javascript
+const status = age >= 18 ? "adult" : "minor";
+```
+
+**Real project usage:**
+```javascript
+// Toggle heart symbol based on filled class
+button.textContent = button.classList.contains("filled") ? "❤" : "♡";
+//                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+//                   condition ? true value : false value
+```
+
+**Breaking it down:**
+```javascript
+button.classList.contains("filled") ? "❤" : "♡"
+//     condition (boolean)           ? true : false
+//     Is there "filled" class?      yes: ❤  no: ♡
+```
+
+**When to use:**
+- Simple conditional assignments
+- Setting values based on conditions
+- When you need concise code
+
+**When NOT to use:**
+- Complex conditions (use if/else for readability)
+- Multiple statements need to execute
+- When nesting makes code hard to read
+
+---
+
 ## 3. Strings
 
 ### 3.1 Using length correctly
@@ -609,7 +670,128 @@ const stories = {
 
 ## 6. DOM Manipulation
 
-### 6.1 querySelector vs querySelectorAll
+### 6.1 Understanding DOM Elements and Their Properties
+
+**Key insight:**
+- Every HTML element in JavaScript is an **object**.
+- These objects have **built-in properties** you can access.
+- You don't "create" these properties - they already exist!
+
+**Common DOM element properties:**
+
+| Property | What it does | Example |
+|----------|--------------|---------|
+| `classList` | Manages CSS classes | `element.classList.add("active")` |
+| `textContent` | Gets/sets text content | `element.textContent = "Hello"` |
+| `innerHTML` | Gets/sets HTML content | `element.innerHTML = "<p>Hi</p>"` |
+| `style` | Modifies inline styles | `element.style.color = "red"` |
+| `id` | Gets/sets element ID | `element.id = "myId"` |
+| `value` | Gets/sets form input value | `input.value = "text"` |
+
+**Example:**
+```javascript
+const button = document.querySelector("button");
+
+// These properties already exist on the button object:
+console.log(button.classList);   // DOMTokenList
+console.log(button.textContent); // Button's text
+console.log(button.style);       // CSSStyleDeclaration
+console.log(button.id);          // Button's ID
+```
+
+**How to know which property to use:**
+
+| Task | Property to use |
+|------|----------------|
+| Add/remove CSS class | `classList` |
+| Change text | `textContent` |
+| Change HTML | `innerHTML` |
+| Change style | `style` |
+| Work with form input | `value` |
+
+---
+
+### 6.2 classList Property
+
+**Key insight:**
+- `classList` is a **property** (not a method) of every DOM element.
+- It's an object that contains methods for managing CSS classes.
+- Every HTML element automatically has this property.
+
+**What is classList:**
+```javascript
+const button = document.querySelector(".favorite-icon");
+
+// classList is a property (object) that exists on every element
+console.log(button.classList);
+// Output: DOMTokenList ["favorite-icon"]
+//         ^^^^^^^^^^^^ 
+//         This is the classList object
+```
+
+**classList methods:**
+
+```javascript
+// Add a class
+element.classList.add("class-name")
+
+// Remove a class
+element.classList.remove("class-name")
+
+// Toggle a class (add if not present, remove if present)
+element.classList.toggle("class-name")
+
+// Check if class exists (returns true/false)
+element.classList.contains("class-name")
+
+// Replace one class with another
+element.classList.replace("old-class", "new-class")
+```
+
+**Real project examples:**
+
+**Example 1: Toggle favorite icon**
+```javascript
+button.addEventListener("click", () => {
+  button.classList.toggle("filled");
+});
+```
+
+**Example 2: Check and update**
+```javascript
+button.textContent = button.classList.contains("filled") ? "❤" : "♡";
+```
+
+**Example 3: Add multiple classes**
+```javascript
+element.classList.add("active", "highlight", "selected");
+```
+
+**Why use classList instead of className:**
+
+❌ **Bad (using className):**
+```javascript
+// This overwrites ALL classes
+element.className = "filled";
+// If element had "favorite-icon" class, it's now gone!
+```
+
+✅ **Good (using classList):**
+```javascript
+// This adds "filled" without removing existing classes
+element.classList.add("filled");
+// Element keeps both "favorite-icon" and "filled" classes
+```
+
+**Key thinking:**
+- See "class" in instructions → think `classList`
+- Need to add/remove classes → use `classList` methods
+- Toggle states → `classList.toggle()` is perfect
+- Check state → `classList.contains()` returns boolean
+
+---
+
+### 6.3 querySelector vs querySelectorAll
 
 **Key differences:**
 
@@ -666,7 +848,7 @@ btns.forEach((btn) => {
 
 ---
 
-### 6.2 textContent vs console.log
+### 6.4 textContent vs console.log
 
 **Key difference:**
 
@@ -733,7 +915,40 @@ if (annualIncome >= minIncome && creditScore >= minCreditScore) {
 
 ---
 
-### 7.2 if + unless + unless (Logic Priority Pattern)
+### 7.2 Translating Instructions to Code Pattern
+
+**Common instruction patterns and their code equivalents:**
+
+| Instruction phrase | What it means | Code pattern |
+|-------------------|---------------|--------------|
+| "When X is clicked" | Event listener | `element.addEventListener("click", ...)` |
+| "add a class" | Modify classList | `element.classList.add("class")` |
+| "remove a class" | Modify classList | `element.classList.remove("class")` |
+| "toggle between X and Y" | Switch states | `classList.toggle()` or ternary operator |
+| "if it's present / not present" | Check condition | `classList.contains()` |
+| "for each element" | Loop through array | `array.forEach()` |
+| "all elements with class X" | Select multiple | `querySelectorAll(".X")` |
+
+**Example instruction breakdown:**
+
+**Instruction:**
+> "When a button is clicked, add a class named 'active' if it's not present, and remove it if it is."
+
+**Code:**
+```javascript
+button.addEventListener("click", () => {
+  button.classList.toggle("active");
+});
+```
+
+**Translation steps:**
+1. "When... is clicked" → `addEventListener("click", ...)`
+2. "add... if not present, remove if it is" → `toggle()`
+3. "class named 'active'" → `"active"`
+
+---
+
+### 7.3 if + unless + unless (Logic Priority Pattern)
 
 **Key insight:**
 - Some English instructions describe conditions as "if + unless + unless".
@@ -974,6 +1189,46 @@ btns.forEach((btn) => {
 - Multiple elements need the same event listener
 - Elements share a common class
 - You want to avoid repetitive code
+
+---
+
+### 10.6 Toggle State Pattern
+
+**Problem:** Need to switch between two states (on/off, filled/empty, active/inactive).
+
+**Solution:** Use `classList.toggle()` with conditional rendering.
+
+**Pattern:**
+```javascript
+element.addEventListener("click", () => {
+  // Toggle the state
+  element.classList.toggle("active");
+  
+  // Update appearance based on state
+  element.textContent = element.classList.contains("active") ? "ON" : "OFF";
+});
+```
+
+**Real project example (Favorite Icon Toggler):**
+```javascript
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    button.classList.toggle("filled");
+    button.textContent = button.classList.contains("filled") ? "❤" : "♡";
+  });
+});
+```
+
+**When to use:**
+- Toggle buttons (favorite, like, bookmark)
+- Show/hide elements
+- Active/inactive states
+- Any binary on/off functionality
+
+**Key methods:**
+- `classList.toggle()` → switch state
+- `classList.contains()` → check current state
+- Ternary operator → update based on state
 
 ---
 
