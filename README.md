@@ -22,6 +22,8 @@ My goal: land a remote job and apply for Spain’s digital nomad visa.
 - [x] CSS Grid: Magazine Layout (FreeCodeCamp)
 - [x] Responsive Design: Personal Portfolio Webpage (FreeCodeCamp)
 - [x] JavaScript: Pyramid Generator (FreeCodeCamp)
+- [x] JavaScript: Inventory Management (FreeCodeCamp)
+- [x] JavaScript: Music Instrument Filter (FreeCodeCamp)
 - [ ] More CSS, Forms, JavaScript, React, Python...
 
 ---
@@ -61,6 +63,9 @@ Focused on practicing specific concepts rather than product-level design.
 - [Inventory Management Program (source)](javascript/inventory-management): View code  
 - Console-based JavaScript program built during FreeCodeCamp JavaScript Fundamentals Review
 
+- [Music Instrument Filter (source)](javascript/music-instrument-filter): View code  
+- [Live Preview](javascript/music-instrument-filter/index.html): See the rendered version in browser
+  
 ---
 
 ## Independent Projects
