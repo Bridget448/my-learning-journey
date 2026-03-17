@@ -889,6 +889,36 @@ button.addEventListener("click", function() {
 
 ---
 
+### 6.5 Event Bubbling
+
+**Key insight:**
+- When you click an element, the event travels **upward** to parent elements.
+- A listener on a parent element will also fire when a child element is clicked.
+
+**e.target vs e.currentTarget:**
+
+| | Description |
+|---|---|
+| `e.target` | The element that was actually clicked |
+| `e.currentTarget` | The element the listener is bound to |
+
+**When do you need to check e.target:**
+- Listener bound to the **element itself** → no check needed, no ambiguity
+- Listener bound to a **parent element** → need to check, because child clicks bubble up and also trigger the listener
+
+**Example: Click background to close lightbox, but clicking the image inside should not close it**
+```javascript
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) {
+    lightbox.style.display = "none";
+  }
+});
+```
+
+The image is a child of lightbox. Clicking the image bubbles up to lightbox and triggers the listener too. The `e.target === lightbox` check filters out those unwanted clicks.
+
+---
+
 ## 7. Logic & Conditionals
 
 ### 7.1 Translating English → JavaScript Logic
