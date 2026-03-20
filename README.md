@@ -67,8 +67,8 @@ Focused on practicing specific concepts rather than product-level design.
 - [Music Instrument Filter (source)](javascript/music-instrument-filter): View code  
 - [Live Preview](javascript/music-instrument-filter/index.html): See the rendered version in browser
 
-- [Rock Paper Scissors Game (source)](javascript/rock-paper-scissors-game): View code  
-- [Live Preview](javascript/rock-paper-scissors-game/index.html): See the rendered version in browser  
+- [Rock Paper Scissors Game (source)](javascript/rock-paper-scissors): View code  
+- [Live Preview](javascript/rock-paper-scissors/index.html): See the rendered version in browser  
   
 ---
 
