@@ -612,6 +612,56 @@ btns.forEach((x) => { ... });
 
 ---
 
+### 4.3 Array.map() Method
+
+**Key idea:**
+- `map()` transforms each element in an array and returns a **new array** of the same length.
+- It does **not** modify the original array.
+- Unlike `forEach()`, `map()` always returns a new array.
+
+**Syntax:**
+```javascript
+array.map((element) => {
+  return transformedElement;
+});
+```
+
+**Simple example:**
+```javascript
+[1, 2, 3].map((num) => num * 2);
+// Returns [2, 4, 6]
+```
+
+**forEach vs map:**
+
+| | `forEach` | `map` |
+|---|---|---|
+| Returns | `undefined` | new array |
+| Use when | you want to **do something** with each element | you want to **transform** each element |
+
+**Real project usage — converting objects to HTML strings:**
+```javascript
+footballTeam.players.map(({ name, position, isCaptain }) =>
+  `<div class="player-card">
+    <h2>${name} ${isCaptain ? "(Captain)" : ""}</h2>
+    <p>Position: ${position}</p>
+  </div>`
+);
+// Returns an array of HTML strings, one per player
+```
+
+**Always pair with .join("") when passing to innerHTML:**
+```javascript
+// map() returns an array → join("") converts to one string → innerHTML renders it
+playerCards.innerHTML = footballTeam.players.map(...).join("");
+```
+
+**Key thinking:**
+- Need to transform every element → use `map()`
+- Need to generate HTML from data → `map()` + `join("")` + `innerHTML`
+
+---
+
 ## 5. Objects
 
 ### 5.1 Nested Objects
@@ -916,6 +966,57 @@ lightbox.addEventListener("click", (e) => {
 ```
 
 The image is a child of lightbox. Clicking the image bubbles up to lightbox and triggers the listener too. The `e.target === lightbox` check filters out those unwanted clicks.
+
+---
+
+### 6.6 innerHTML
+
+**Key idea:**
+- `innerHTML` is a property that gets or sets the HTML content inside an element.
+- Assigning an HTML string to it causes the browser to parse and render it as real page content.
+- This is how JavaScript dynamically injects content into the page.
+
+**How it works:**
+```javascript
+// JS generates an HTML string
+const html = "<p>Hello</p>";
+
+// innerHTML hands it to the browser
+element.innerHTML = html;
+
+// Browser parses and renders it → user sees "Hello" on the page
+```
+
+**vs textContent:**
+
+| | `textContent` | `innerHTML` |
+|---|---|---|
+| Use when | inserting plain text | inserting HTML structure |
+| Renders tags? | No (`<p>` shows as text) | Yes (`<p>` becomes a paragraph) |
+
+**Real project usage:**
+```javascript
+playerCards.innerHTML = footballTeam.players.map(({ name, position }) =>
+  `<div class="player-card">
+    <h2>${name}</h2>
+    <p>Position: ${position}</p>
+  </div>`
+).join("");
+```
+
+**Full data flow:**
+```
+JS data (array)
+  → .map() converts each object to an HTML string
+  → .join("") merges the array into one string
+  → innerHTML hands it to the browser
+  → browser renders it → user sees the page
+```
+
+**Key thinking:**
+- Displaying plain text → `textContent`
+- Displaying HTML structure → `innerHTML`
+- Dynamic content from data → `map()` + `join("")` + `innerHTML`
 
 ---
 
