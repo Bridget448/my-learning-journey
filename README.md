@@ -35,6 +35,7 @@ My goal: land a remote job and apply for Spain’s digital nomad visa.
 - [CSS Notes](css-notes.md)
 - [Survey Form Notes](survey-form-notes.md)
 - [Personal Portfolio Notes](personal-portfolio-notes.md)
+- [JavaScript Notes](javascript-notes.md)
 
 ---
 
