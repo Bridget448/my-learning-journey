@@ -65,8 +65,11 @@ Focused on practicing specific concepts rather than product-level design.
 ---
 
 ## Independent Projects
-> Projects designed and built independently to solve real problems or explore ideas.  
-> (Coming soon)
+> Projects designed and built independently to solve real problems or explore ideas.
+
+- [Landing Page (source)](https://github.com/Bridget448/landing-page): View code
+- [Live Preview](https://bridget448.github.io/landing-page/): See the rendered version in browser
+- A client-ready landing page with contact form integration via EmailJS
 
 ---
 
