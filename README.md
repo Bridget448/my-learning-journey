@@ -1,6 +1,6 @@
 # my-learning-journey
 A self-taught journey into front-end development, blockchain, and AI.  
-My goal: land a remote job and apply for the digital nomad visa.
+My goal: land a remote job.
 
 ---
 
